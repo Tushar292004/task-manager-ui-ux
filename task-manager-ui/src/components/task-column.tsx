@@ -19,7 +19,7 @@ export function TaskColumn({ column, tasks, provided }: TaskColumnProps) {
   const [showAddTask, setShowAddTask] = useState(false)
 
   return (
-    <Card className="flex flex-col bg-muted/50">
+    <Card className="flext   flex-col bg-muted/50">
       <CardHeader className="flex-none p-4">
         <CardTitle className="flex items-center justify-between text-sm font-medium">
           {column.title}
