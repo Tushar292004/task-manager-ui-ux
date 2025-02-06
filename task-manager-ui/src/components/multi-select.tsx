@@ -51,7 +51,7 @@ export function MultiSelect({ selected, options, onChange, className }: MultiSel
                 }}
                 onClick={() => onChange(selected.filter((value) => value !== option.value))}
               >
-                <X className="h-3 w-3 text-muted-foreground hover:text-foreground" />
+                <X className="h-3 w-3 text-[#BA532D] hover:text-foreground" />
               </button>
             </Badge>
           ))}
@@ -79,11 +79,11 @@ export function MultiSelect({ selected, options, onChange, className }: MultiSel
                   >
                     <div
                       className={cn(
-                        "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary",
-                        isSelected ? "bg-primary text-primary-foreground" : "opacity-50 [&_svg]:invisible",
+                        "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-[#BA532D]",
+                        isSelected ? "bg-[#BA532D] text-primary-foreground" : "opacity-50 [&_svg]:invisible",
                       )}
                     >
-                      <span className="h-4 w-4 text-xs">✓</span>
+                      <span className="h-4 w-4 flex justify-center items-center font-bold text-xs">✓</span>
                     </div>
                     {option.label}
                   </CommandItem>

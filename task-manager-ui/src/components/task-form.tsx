@@ -159,14 +159,14 @@ export function TaskForm({ task, defaultStatus, onComplete }: TaskFormProps) {
               <FormItem>
                 <FormLabel>End Date</FormLabel>
                 <FormControl>
-                  <Input type="date" {...field} value={field.value ?? ""} />
+                  <Input className="" type="date" {...field} value={field.value ?? ""} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
         </div>
-        <Button type="submit" className="w-full">
+        <Button type="submit" className="w-full bg-[#BA532D] text-white hover:text-[#BA532D]">
           {task ? "Update Task" : "Create Task"}
         </Button>
       </form>
