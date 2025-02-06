@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { LineShadowText } from "./line-shadow-text";
 const Header = () => {
     return (
