@@ -28,9 +28,9 @@ export function EditTaskDialog({ task }: EditTaskDialogProps) {
           <MoreHorizontal className="h-4 w-4" />
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] border-[#BA532D]">
         <DialogHeader>
-          <DialogTitle>Edit Task</DialogTitle>
+          <DialogTitle className="text-[#BA532D]">Edit Task</DialogTitle>
           <DialogDescription>Make changes to your task here. Click save when you're done.</DialogDescription>
         </DialogHeader>
         <TaskForm task={task} onComplete={() => setOpen(false)} />
