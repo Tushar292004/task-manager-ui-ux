@@ -18,6 +18,12 @@ interface TaskFormProps {
   onComplete: () => void
 }
 
+function formatDateForInput(date: Date | string | undefined): string {
+  if (!date) return ""
+  const d = date instanceof Date ? date : new Date(date)
+  return d.toISOString().split('T')[0]
+}
+
 export function TaskForm({ task, defaultStatus, onComplete }: TaskFormProps) {
   const { addTask, updateTask, members, columns } = useTaskStore()
 
@@ -38,8 +44,8 @@ export function TaskForm({ task, defaultStatus, onComplete }: TaskFormProps) {
       description: task?.description ?? "",
       status: task?.status ?? defaultStatus ?? columns[0]?.status ?? "backlog",
       assignees: task?.assignees ?? [],
-      startDate: task?.startDate ? task.startDate.toISOString().split("T")[0] : "",
-      endDate: task?.endDate ? task.endDate.toISOString().split("T")[0] : "",
+      startDate: task?.startDate ? formatDateForInput(task.startDate) : "",
+      endDate: task?.endDate ? formatDateForInput(task.endDate) : "",
     },
   })
 

@@ -19,7 +19,7 @@ export function TaskColumn({ column, tasks, provided }: TaskColumnProps) {
   const [showAddTask, setShowAddTask] = useState(false)
 
   return (
-    <Card className="flext   flex-col bg-muted/50">
+    <Card className="flext flex-col bg-muted/50">
       <CardHeader className="flex-none p-4">
         <CardTitle className="flex items-center justify-between text-sm font-medium">
           {column.title}
@@ -29,7 +29,7 @@ export function TaskColumn({ column, tasks, provided }: TaskColumnProps) {
       <CardContent
         {...provided.droppableProps}
         ref={provided.innerRef}
-        className="flex-1 space-y-2 overflow-y-auto p-2"
+        className="space-y-2 overflow-y-auto p-2"
       >
         {tasks.map((task, index) => (
           <Draggable key={task.id} draggableId={task.id} index={index}>

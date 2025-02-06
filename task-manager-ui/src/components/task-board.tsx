@@ -32,7 +32,7 @@ export function TaskBoard() {
         <AddSectionDialog />
       </div>
       <DragDropContext onDragEnd={handleDragEnd}>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-start">
           {columns.map((column) => (
             <Droppable key={column.id} droppableId={column.status}>
               {(provided) => <TaskColumn column={column} tasks={filterTasks(column.status)} provided={provided} />}

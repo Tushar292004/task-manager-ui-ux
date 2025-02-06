@@ -1,6 +1,16 @@
-import { create } from "zustand"
+import { create, StateCreator } from "zustand"
 import type { Task, TaskStatus, Member, Column } from "@/types/task"
-import { persist } from "zustand/middleware"
+import { persist, PersistOptions, createJSONStorage } from "zustand/middleware"
+
+// Helper function to convert date strings back to Date objects
+const rehydrateTask = (task: Task): Task => ({
+  ...task,
+  startDate: task.startDate ? new Date(task.startDate) : undefined,
+  endDate: task.endDate ? new Date(task.endDate) : undefined,
+  createdAt: new Date(task.createdAt),
+  updatedAt: new Date(task.updatedAt),
+})
+
 
 interface TaskState {
   tasks: Record<string, Task> 
@@ -14,8 +24,13 @@ interface TaskState {
   filterTasks: (status: TaskStatus) => Task[]
 }
 
+type TaskStorePersist = (
+  config: StateCreator<TaskState>,
+  options: PersistOptions<TaskState>
+) => StateCreator<TaskState>
+
 export const useTaskStore = create<TaskState>()(
-  persist(
+  (persist as TaskStorePersist)(
     (set, get) => ({
       tasks: {},
       columns: [
@@ -96,11 +111,26 @@ export const useTaskStore = create<TaskState>()(
       },
       filterTasks: (status) => {
         const { tasks } = get()
-        return Object.values(tasks).filter((task) => task.status === status)
+        return Object.values(tasks)
+          .map(rehydrateTask)
+          .filter((task) => task.status === status)
       },
     }),
     {
       name: "task-store",
+      storage: createJSONStorage(() => localStorage),
+      onRehydrateStorage: () => (state) => {
+        if (!state) return
+
+        // Rehydrate all tasks with proper Date objects
+        const rehydratedTasks = Object.fromEntries(
+          Object.entries(state.tasks).map(([id, task]) => [
+            id,
+            rehydrateTask(task as Task)
+          ])
+        )
+        state.tasks = rehydratedTasks
+      },
     },
   ),
 )
