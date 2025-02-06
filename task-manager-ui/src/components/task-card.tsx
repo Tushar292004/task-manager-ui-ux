@@ -20,7 +20,7 @@ export function TaskCard({ task, provided }: TaskCardProps) {
     <Card ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} className="bg-card">
       <CardHeader className="p-3">
         <CardTitle className="flex items-start justify-between text-sm font-medium">
-          <span>{task.title}</span>
+          <span className="text-[#BA532D]">{task.title}</span>
           <EditTaskDialog task={task} />
         </CardTitle>
       </CardHeader>
@@ -30,8 +30,8 @@ export function TaskCard({ task, provided }: TaskCardProps) {
           <div className="flex -space-x-2">
             {assignees.map((assignee) => (
               <Avatar key={assignee.id} className="h-6 w-6 border-2 border-background">
-                <AvatarImage src={assignee.avatar} alt={assignee.name} />
-                <AvatarFallback>{assignee.name[0]}</AvatarFallback>
+                <AvatarImage src={assignee.avatar} alt={assignee.name} className="" />
+                <AvatarFallback className="bg-[#BA532D]">{assignee.name[0]}</AvatarFallback>
               </Avatar>
             ))}
           </div>

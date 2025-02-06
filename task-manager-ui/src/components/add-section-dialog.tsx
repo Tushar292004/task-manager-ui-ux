@@ -31,7 +31,7 @@ export function AddSectionDialog() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" className="border-dashed">
+        <Button variant="outline" className="border-dashed rounded-xl border-[#BA532D]">
           <Plus className="mr-2 h-4 w-4" />
           Add Section
         </Button>
