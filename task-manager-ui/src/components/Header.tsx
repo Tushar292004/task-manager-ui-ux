@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { ModeToggle } from "./mode-toggle";
 const Header = () => {
     return (
         <div className=" px-10 border-b-2 border-[#BA532D] bg-muted/50 py-4 flex justify-between">
