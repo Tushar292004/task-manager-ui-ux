@@ -10,7 +10,7 @@ border-t-2 bg-muted/50 border-t-[#BA532D]" >
         <Instagram className="hover:text-white" />
         </div>
           <div className="">
-              <span className="text-[#BA532D] text-2xl font-semibold tracking-tighter">
+              <span className="text-[#BA532D] text-2xl font-medium tracking-tighter">
                   created by <a href="https://tinyurl.com/TusharChandak" target="_blank">Tushar Chandak</a>
   
               </span>
