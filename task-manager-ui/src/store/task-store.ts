@@ -3,7 +3,7 @@ import type { Task, TaskStatus, Member, Column } from "@/types/task"
 import { persist } from "zustand/middleware"
 
 interface TaskState {
-  tasks: Map<string, Task>
+  tasks: Record<string, Task> 
   columns: Column[]
   members: Member[]
   addTask: (task: Omit<Task, "id" | "createdAt" | "updatedAt">) => void
@@ -17,7 +17,7 @@ interface TaskState {
 export const useTaskStore = create<TaskState>()(
   persist(
     (set, get) => ({
-      tasks: new Map(),
+      tasks: {},
       columns: [
         { id: "backlog", title: "Backlog", status: "backlog" },
         { id: "in-progress", title: "In Progress", status: "in-progress" },
@@ -38,44 +38,51 @@ export const useTaskStore = create<TaskState>()(
             createdAt: now,
             updatedAt: now,
           }
-          const newTasks = new Map(state.tasks)
-          newTasks.set(id, newTask)
-          return { tasks: newTasks }
+          return { 
+            tasks: {
+              ...state.tasks,
+              [id]: newTask
+            }
+          }
         })
       },
       updateTask: (id, updatedTask) => {
         set((state) => {
-          const newTasks = new Map(state.tasks)
-          const task = newTasks.get(id)
-          if (task) {
-            newTasks.set(id, {
-              ...task,
-              ...updatedTask,
-              updatedAt: new Date(),
-            })
+          if (!state.tasks[id]) return state
+          
+          return { 
+            tasks: {
+              ...state.tasks,
+              [id]: {
+                ...state.tasks[id],
+                ...updatedTask,
+                updatedAt: new Date(),
+              }
+            }
           }
-          return { tasks: newTasks }
         })
       },
       deleteTask: (id) => {
         set((state) => {
-          const newTasks = new Map(state.tasks)
-          newTasks.delete(id)
+          const newTasks = { ...state.tasks }
+          delete newTasks[id]
           return { tasks: newTasks }
         })
       },
       moveTask: (taskId, newStatus) => {
         set((state) => {
-          const newTasks = new Map(state.tasks)
-          const task = newTasks.get(taskId)
-          if (task) {
-            newTasks.set(taskId, {
-              ...task,
-              status: newStatus,
-              updatedAt: new Date(),
-            })
+          if (!state.tasks[taskId]) return state
+
+          return {
+            tasks: {
+              ...state.tasks,
+              [taskId]: {
+                ...state.tasks[taskId],
+                status: newStatus,
+                updatedAt: new Date(),
+              }
+            }
           }
-          return { tasks: newTasks }
         })
       },
       addColumn: (title) => {
@@ -89,7 +96,7 @@ export const useTaskStore = create<TaskState>()(
       },
       filterTasks: (status) => {
         const { tasks } = get()
-        return Array.from(tasks.values()).filter((task) => task.status === status)
+        return Object.values(tasks).filter((task) => task.status === status)
       },
     }),
     {
