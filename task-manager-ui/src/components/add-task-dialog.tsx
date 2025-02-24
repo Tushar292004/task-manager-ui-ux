@@ -22,7 +22,7 @@ export function AddTaskDialog({ defaultStatus, onClose }: AddTaskDialogProps) {
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] ">
         <DialogHeader>
           <DialogTitle>Add Task</DialogTitle>
           <DialogDescription>Create a new task by filling out the form below.</DialogDescription>

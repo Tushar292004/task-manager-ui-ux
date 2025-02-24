@@ -166,7 +166,7 @@ export function TaskForm({ task, defaultStatus, onComplete }: TaskFormProps) {
             )}
           />
         </div>
-        <Button type="submit" className="w-full">
+        <Button type="submit" className="w-full bg-[#BA532D] text-white hover:text-[#BA532D]">
           {task ? "Update Task" : "Create Task"}
         </Button>
       </form>

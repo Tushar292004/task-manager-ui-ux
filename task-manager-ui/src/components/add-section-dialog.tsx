@@ -31,19 +31,19 @@ export function AddSectionDialog() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" className="border-dashed rounded-xl border-[#BA532D]">
+        <Button variant="outline" className="border-dashed rounded-xl border-[#BA532D] ">
           <Plus className="mr-2 h-4 w-4" />
           Add Section
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] ">
         <DialogHeader>
-          <DialogTitle>Add Section</DialogTitle>
+          <DialogTitle className="t" >Add Section</DialogTitle>
           <DialogDescription>Create a new section to organize your tasks.</DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <Input placeholder="Enter section title..." value={title} onChange={(e) => setTitle(e.target.value)} />
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-full bg-[#BA532D] text-white hover:text-[#BA532D] font-medium">
             Create Section
           </Button>
         </form>
