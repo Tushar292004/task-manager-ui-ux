@@ -19,10 +19,9 @@ const Header = () => {
                     <SheetTrigger><AlignRight className="text-4xl  font-bold tracking-tight" /></SheetTrigger>
                     <SheetContent className="border-[#BA532D]">
                         <SheetHeader>
-                            <SheetTitle>Are you absolutely sure?</SheetTitle>
+                            <SheetTitle>Menu</SheetTitle>
                             <SheetDescription>
-                                This action cannot be undone. This will permanently delete your account
-                                and remove your data from our servers.
+                                 <Link to={"/"}>Timeline Chart</Link>
                             </SheetDescription>
                         </SheetHeader>
                     </SheetContent>
