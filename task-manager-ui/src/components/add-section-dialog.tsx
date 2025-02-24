@@ -36,24 +36,14 @@ export function AddSectionDialog() {
           Add Section
         </Button>
       </DialogTrigger>
-<<<<<<< HEAD
-      <DialogContent className="sm:max-w-[425px] ">
-        <DialogHeader>
-          <DialogTitle className="t" >Add Section</DialogTitle>
-=======
       <DialogContent className="sm:max-w-[425px] border-[#BA532D]">
         <DialogHeader>
           <DialogTitle className="text-[#BA532D]">Add Section</DialogTitle>
->>>>>>> 6415bc4aae0b736e486b174a2c29bd3772e34529
           <DialogDescription>Create a new section to organize your tasks.</DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <Input placeholder="Enter section title..." value={title} onChange={(e) => setTitle(e.target.value)} />
-<<<<<<< HEAD
-          <Button type="submit" className="w-full bg-[#BA532D] text-white hover:text-[#BA532D] font-medium">
-=======
           <Button type="submit" className="w-full bg-[#BA532D] text-white hover:text-[#BA532D]">
->>>>>>> 6415bc4aae0b736e486b174a2c29bd3772e34529
             Create Section
           </Button>
         </form>
