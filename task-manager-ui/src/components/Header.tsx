@@ -20,8 +20,9 @@ const Header = () => {
                     <SheetContent className="border-[#BA532D]">
                         <SheetHeader>
                             <SheetTitle>Menu</SheetTitle>
-                            <SheetDescription>
-                                 <Link to={"/"}>Timeline Chart</Link>
+                            <SheetDescription className="flex flex-col gap-2">
+                                <Link to={"/"} className="hover:text-[#ba532dba]">Task Board</Link>
+                                <Link to={"/Timeline"} className="hover:text-[#ba532dba]">Timeline Chart</Link>
                             </SheetDescription>
                         </SheetHeader>
                     </SheetContent>
