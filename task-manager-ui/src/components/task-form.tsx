@@ -159,7 +159,7 @@ export function TaskForm({ task, defaultStatus, onComplete }: TaskFormProps) {
               <FormItem>
                 <FormLabel>End Date</FormLabel>
                 <FormControl>
-                  <Input type="date" {...field} value={field.value ?? ""} />
+                  <Input className="" type="date" {...field} value={field.value ?? ""} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
